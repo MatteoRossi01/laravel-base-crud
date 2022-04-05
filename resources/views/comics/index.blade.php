@@ -15,6 +15,7 @@
                 <th scope="col">Serie</th>
                 <th scope="col">Data uscita</th>
                 <th scope="col">Tipologia</th>
+                <th scope="col">Azioni</th>
               </tr>
             </thead>
             <tbody>
@@ -27,6 +28,9 @@
                     <td>{{ $comic->series }}</td>
                     <td>{{ $comic->sale_date }}</td>
                     <td>{{ $comic->type }}</td>
+                    <td>
+                        <a class="btn btn-primary mt-5" href="{{route('comics.show', $comic->id)}}" role="button">Vedi</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

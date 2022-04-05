@@ -1,0 +1,26 @@
+.my_header {
+    height: 70px;
+    background-color: rgb(86, 131, 236);
+}
+
+.my_main {
+    margin: auto;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.my_container {
+    width: 20%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.my_box-description {
+    width: 65%;
+}
