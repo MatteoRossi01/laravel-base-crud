@@ -2,5 +2,7 @@
 @section('pageTitle', 'Home')
 
 @section('content')
-    
+    <div>
+        ciao
+    </div>
 @endsection
