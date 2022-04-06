@@ -31,8 +31,16 @@
                     <td>{{ $comic->series }}</td>
                     <td>{{ $comic->sale_date }}</td>
                     <td>{{ $comic->type }}</td>
-                    <td>
+                    <td class="d-flex flex-row">
                         <a class="btn btn-primary mt-5" href="{{route('comics.show', $comic->id)}}" role="button">Vedi</a>
+                        <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
+
+                          @csrf
+    
+                          @method('DELETE')
+    
+                          <button type="submit" class="btn btn-danger ms-2 mt-5 text-white">Rimuovi</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

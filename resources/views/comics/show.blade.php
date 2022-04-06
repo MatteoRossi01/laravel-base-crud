@@ -6,6 +6,12 @@
 
 @section('content')
 
+    @if (session('insert'))
+        <div class="alert alert-success">
+            {{ session('insert') }}
+        </div>
+    @endif
+
     <header class="my_header d-flex align-items-center justify-content-center">
         <h3 class="font-monospace font-uppercase pt-2 ps-3">{{$comic->title}}</h3>
     </header>

@@ -36,13 +36,28 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate(
+
+            [
+                "title" =>'required|min:5',
+                "price" => 'required|numeric| min:1',
+                "description" => 'required|min:10',
+                "thumb" => 'required|url',
+                "type" => 'required',
+                "series" => 'required| min:2',
+                "sale_date" => 'required|date',
+            ]
+        );
+
+
         $data = $request->all();
 
         $newComics = new Comic();
         $newComics->fill($data);
         $newComics->save();
 
-        return redirect()->route('comics.show', $newComics->id);
+        return redirect()->route('comics.show', $newComics->id)->with('insert', 'Nuovo fumetto inserito!');
     }
 
     /**
@@ -74,9 +89,28 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        $request->validate(
+
+            [
+                "title" =>'required|min:5',
+                "price" => 'required|numeric| min:1',
+                "description" => 'required|min:10',
+                "thumb" => 'required|url',
+                "type" => 'required',
+                "series" => 'required| min:2',
+                "sale_date" => 'required|date',
+            ]
+        );
+
+        $data = $request->all();
+
+        $comic->update($data);
+
+        $comic->save();
+
+        return redirect()-> route('comics.show', $comic->id)->with('insert', 'Fumetto modificato!');;
     }
 
     /**
@@ -85,8 +119,10 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+
+        return redirect()->route('comics.index')->with('status', 'Cancellazione avvenuta!');
     }
 }
