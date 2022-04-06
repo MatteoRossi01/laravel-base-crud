@@ -4,6 +4,9 @@
 @section('content')
 
     <div class="container">
+        <button class="btn btn-primary">
+          <a href="{{ route('comics.create') }}" class="text-dark">Aggiungi un nuovo fumetto</a>
+        </button>
 
         <table class="table table-striped table-hover">
             <thead>
@@ -35,7 +38,6 @@
                 @endforeach
             </tbody>
           </table>
-
     </div>
 
 @endsection
